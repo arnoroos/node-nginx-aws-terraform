@@ -1,0 +1,12 @@
+web:
+  build: ./dig-js-customercommons-asset
+  restart: always
+
+nginx:
+  build: ./nginx/
+  restart: always
+  ports:
+    - "80:80"
+  links:
+    - web:web
+

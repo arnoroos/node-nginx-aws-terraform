@@ -56,17 +56,6 @@ resource "aws_instance" "NodeJSApp" {
   }
 
   provisioner "file" {
-    source      = "./app"
-    destination = "/home/ec2-user/app"
-    connection {
-      host        = aws_instance.NodeJSApp.private_ip
-      type        = "ssh"
-      user        = "ec2-user"
-      private_key = file(var.private_key_path)
-    }
-  }
-
-  provisioner "file" {
     source      = "./nginx"
     destination = "/home/ec2-user/nginx"
     connection {
@@ -91,8 +80,8 @@ resource "aws_instance" "NodeJSApp" {
   provisioner "remote-exec" {
     inline = [
       "sudo yum -y update",
-      # "sudo yum -y install git",
-      # "sudo git clone https://arnoroos:r0sdel413!@bitbucket.org/dttawsassetteam/dig-js-customercommons-asset.git /home/ec2-user/dig-js-customercommons-asset",
+      "sudo yum -y install git",
+      "sudo git clone https://arnoroos:r0sdel413!@bitbucket.org/dttawsassetteam/dig-js-customercommons-asset.git /home/ec2-user/dig-js-customercommons-asset",
       "sudo yum -y install docker",
       "sudo service docker restart",
       "sudo curl -L https://github.com/docker/compose/releases/download/1.15.0/docker-compose-`uname -s`-`uname -m` > docker-compose",
