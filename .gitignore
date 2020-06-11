@@ -1,7 +1,0 @@
-
-terraform.tfstate.backup
-terraform.tfstate
-.terraform.tfstate.lock.info
-.terraform/plugins/windows_amd64/lock.json
-.terraform/plugins/windows_amd64/terraform-provider-docker_v2.7.1_x4.exe
-.terraform/plugins/windows_amd64/terraform-provider-aws_v2.65.0_x4.exe

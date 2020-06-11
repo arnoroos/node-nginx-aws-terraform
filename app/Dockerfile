@@ -1,9 +1,7 @@
-FROM node:8.4.0-alpine
-
-WORKDIR /usr/src/app
-
-COPY ./src .
-
+FROM node:14
+WORKDIR /
+COPY package.json ./
+RUN npm install
+COPY . /
 EXPOSE 8801
-
-ENTRYPOINT [ "node", "main.js" ]
+CMD ["npm","start"]
