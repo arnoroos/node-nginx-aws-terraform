@@ -91,12 +91,14 @@ resource "aws_instance" "NodeJSApp" {
   provisioner "remote-exec" {
     inline = [
       "sudo yum -y update",
+      # "sudo yum -y install git",
+      # "sudo git clone https://arnoroos:r0sdel413!@bitbucket.org/dttawsassetteam/dig-js-customercommons-asset.git /home/ec2-user/dig-js-customercommons-asset",
       "sudo yum -y install docker",
-      "service docker restart",
+      "sudo service docker restart",
       "sudo curl -L https://github.com/docker/compose/releases/download/1.15.0/docker-compose-`uname -s`-`uname -m` > docker-compose",
       "sudo mv docker-compose /usr/local/bin/docker-compose",
-      "sudo chmod +x /usr/local/bin/docker-compose",
-      "sudo /usr/local/bin/docker-compose up -d --scale web=2",
+      # "sudo chmod +x /usr/local/bin/docker-compose",
+      # "sudo /usr/local/bin/docker-compose up -d --scale web=2",
     ]
     connection {
       host        = self.private_ip
